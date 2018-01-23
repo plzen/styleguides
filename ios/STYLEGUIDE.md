@@ -455,6 +455,7 @@ Here's an example of a well-styled class definition:
 class Circle: Shape {
   var x: Int, y: Int
   var radius: Double
+
   var diameter: Double {
     get {
       return radius * 2
@@ -479,10 +480,13 @@ class Circle: Shape {
   }
 }
 
+// MARK: - CustomStringConvertible
+
 extension Circle: CustomStringConvertible {
   var description: String {
     return "center = \(centerString) area = \(area())"
   }
+
   private var centerString: String {
     return "(\(x),\(y))"
   }
@@ -533,6 +537,7 @@ Marking classes or members as `final` in tutorials can distract from the main to
 // Turn any generic type into a reference type using this Box class.
 final class Box<T> {
   let value: T
+
   init(_ value: T) {
     self.value = value
   }
