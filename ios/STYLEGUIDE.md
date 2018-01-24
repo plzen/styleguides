@@ -66,7 +66,7 @@ Descriptive and consistent naming makes software easier to read and understand. 
 - striving for clarity at the call site
 - prioritizing clarity over brevity
 - using camel case (not snake case)
-- using uppercase for types (and protocols), lowercase for everything else
+- using upper camel case (PascalCase) for types (and protocols), lowercase for everything else
 - including all needed words while omitting needless words
 - using names based on roles, not types
 - sometimes compensating for weak type information
