@@ -35,6 +35,9 @@ This style guide is based on [The Official raywenderlich.com Swift Style Guide](
     * [By Access Level](#by-access-level)
     * [By let and var keywords](#by-let-and-var-keywords)
   * [SwiftLint comments](#swiftlint-comments)
+* [Methods](#methods)
+  * [Order Methods](#order-methods)
+    * [By Access Level](#by-access-level)
 * [Function Declarations](#function-declarations)
 * [Closure Expressions](#closure-expressions)
 * [Types](#types)
@@ -421,7 +424,7 @@ Use capitalized first letter for MARK message
 
 #### Usage
 
-Use MARK only for methods
+Use MARK only for methods. Use MARK comments to group code related to the same components or logic.
 
 **Preferred:**
 ```swift
@@ -658,6 +661,19 @@ private var tableDelegate: OrdersDetailsTableDelegate!
 // swiftlint:enable weak_delegate
 ```
 
+## Methods
+
+### Order Methods
+
+#### By Access Level
+
+Sort methods by decreasing access level.
+1. open
+2. public
+3. internal
+4. fileprivate
+5. private
+
 ## Function Declarations
 
 Keep short function declarations on one line including the opening brace:
@@ -710,7 +726,7 @@ UIView.animate(withDuration: 1.0, animations: {
 For single-expression closures where the context is clear, use implicit returns:
 
 ```swift
-attendeeList.sort { a, b in
+attendeeList.sort { (a, b) in
     a > b
 }
 ```
@@ -724,6 +740,30 @@ let value = numbers
     .map {$0 * 2}
     .filter {$0 > 50}
     .map {$0 + 10}
+```
+
+Don't use parentheses for single closure parameter, use parentheses for multiple parameters:
+
+**Preferred:**
+```swift
+createUserUseCase.create { completed in
+    // handle completed state
+}
+
+attendeeList.sort { (a, b) in
+    a > b
+}
+```
+
+**Not Preferred:**
+```swift
+createUserUseCase.create { (completed) in
+    // handle completed state
+}
+
+attendeeList.sort { a, b in
+    a > b
+}
 ```
 
 ## Types
